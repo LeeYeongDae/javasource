@@ -9,7 +9,7 @@ public class IfTest6 {
         System.out.println("점수 입력");
         String input = scanner.nextLine();
         int score = Integer.parseInt(input);
-
+        scanner.close();
         char grade = ' ', opt='0';
         if (score >= 90)
         {
@@ -44,6 +44,6 @@ public class IfTest6 {
         else
             grade = 'F';
         System.out.printf("당신의 학점은 %c%c입니다.\n",grade,opt);
-        scanner.close();
+    
     }
 }
