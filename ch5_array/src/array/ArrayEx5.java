@@ -28,7 +28,7 @@ public class ArrayEx5 {
                dbArr[i] = score;
           }
 
-          System.out.println(dbArr);
+          System.out.println(dbArr); // 배열의 주소 출력
           System.out.println(Arrays.toString(dbArr));
      }
 }
