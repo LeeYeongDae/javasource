@@ -29,6 +29,7 @@ public class Student {
           this.address = address;
      }
 
+     // 멤버 메서드(기본타입, 객체, 보이드)
      public void setName(String name) {
           this.name = name;
      }

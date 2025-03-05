@@ -12,5 +12,8 @@ public class StudentEx1 {
           System.out.println(stu1);
           System.out.println(stu2);
           System.out.println(stu3);
+
+          stu3.setPhone("010-5678-4321");
+          System.out.println(stu3);
      }
 }
