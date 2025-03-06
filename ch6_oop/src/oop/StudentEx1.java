@@ -13,7 +13,20 @@ public class StudentEx1 {
           System.out.println(stu2);
           System.out.println(stu3);
 
+          studentInfo(stu3);
+
           stu3.setPhone("010-5678-4321");
           System.out.println(stu3);
+     }
+
+     public static void studentInfo(Student stu) {
+          System.out.println("==============================");
+          System.out.println("아이디 : " + stu.getId());
+          System.out.println("이름 : " + stu.getName());
+          System.out.println("학년 : " + stu.getGrade());
+          System.out.println("반 : " + stu.getClassN());
+          System.out.println("전화번호 : " + stu.getPhone());
+          System.out.println("이메일 : " + stu.getAddress());
+          System.out.println("==============================");
      }
 }

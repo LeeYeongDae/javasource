@@ -6,10 +6,10 @@ public class Student {
      // 멤버 변수, 멤버 메소드, 생성자, 소멸자
      private String name;
      private String id;
-     int grade;
-     int classN;
-     String phone;
-     String address;
+     private int grade;
+     private int classN;
+     private String phone;
+     private String address;
 
      // 생성자 : 명시하지 않으면 default 생성
      public Student() {
@@ -68,4 +68,19 @@ public class Student {
                     + ", address=" + address + "]";
      }
 
+     public int getGrade() {
+          return grade;
+     }
+
+     public int getClassN() {
+          return classN;
+     }
+
+     public String getPhone() {
+          return phone;
+     }
+
+     public String getAddress() {
+          return address;
+     }
 }
