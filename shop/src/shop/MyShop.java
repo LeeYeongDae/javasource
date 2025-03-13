@@ -1,14 +1,16 @@
 package shop;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MyShop implements IShop {
 
      private String title;
-     private User[] users = new User[5];
-     private Product[] products = new Product[10];
+     private List<User> users = new ArrayList<>(5);
+     private List<Product> products = new ArrayList<>(10);
      private String seluser;
-     private Product[] carts = new Product[10];
+     private List<Product> carts = new ArrayList<>(10);
      Scanner sc = new Scanner(System.in);
 
      @Override
@@ -18,35 +20,21 @@ public class MyShop implements IShop {
 
      @Override
      public void genUser(User user) {
-          int empty = 0;
-          for (int i = 0; i < users.length; i++) {
-               if (users[i] == null) {
-                    empty = i;
-                    break;
-               }
-          }
-          users[empty] = user;
+          users.add(user);
      }
 
      @Override
      public void genProduct(Product p) {
-          int empty = 0;
-          for (int i = 0; i < products.length; i++) {
-               if (products[i] == null) {
-                    empty = i;
-                    break;
-               }
-          }
-          products[empty] = p;
+          products.add(p);
      }
 
      @Override
      public void start() {
           System.out.println(this.title + " : 메인화면 - 계정선택");
           System.out.println("===============================");
-          for (int i = 0; i < users.length; i++) {
-               if (users[i] != null)
-                    System.out.println("[" + i + "] " + users[i].getName() + "(" + users[i].getPayType() + ")");
+          for (int i = 0; i < users.size(); i++) {
+               if (users.get(i) != null)
+                    System.out.println("[" + i + "] " + users.get(i).getName() + "(" + users.get(i).getPayType() + ")");
           }
           System.out.println("[x] 종료");
           System.out.println("===============================");
@@ -54,24 +42,23 @@ public class MyShop implements IShop {
           seluser = sc.nextLine();
           if (seluser.equalsIgnoreCase("x")) {
                System.out.println("가게를 닫습니다.");
-          } else if (users[Integer.parseInt(seluser)] != null) {
-               System.out.println(users[Integer.parseInt(seluser)].getName() + "님 안녕하세요.");
+          } else if (users.get(Integer.parseInt(seluser)) != null) {
+               System.out.println(users.get(Integer.parseInt(seluser)).getName() + "님 안녕하세요.");
                productList();
           }
      }
 
      public void productList() {
-          int empty = 0;
           boolean run = true;
           while (run) {
                System.out.println(this.title + " : 상품목록 - 상품선택");
                System.out.println("===============================");
-               for (int i = 0; i < products.length; i++) {
-                    if (products[i] != null) {
-                         System.out.println("[" + i + "] " + products[i].getPname());
-                         System.out.println("    가격 : " + products[i].getPrice());
+               for (int i = 0; i < products.size(); i++) {
+                    if (products.get(i) != null) {
+                         System.out.println("[" + i + "] " + products.get(i).getPname());
+                         System.out.println("    가격 : " + products.get(i).getPrice());
                          System.out.print("    ");
-                         products[i].printExtra();
+                         products.get(i).printExtra();
                     }
                }
                System.out.println("[H] 메인화면");
@@ -87,15 +74,9 @@ public class MyShop implements IShop {
                     System.out.println("체크아웃하셨습니다.");
                     run = false;
                     checkout();
-               } else if (products[Integer.parseInt(selprod)] != null) {
-                    System.out.println(products[Integer.parseInt(selprod)].getPname() + "을 선택하셨습니다.");
-                    for (int i = 0; i < carts.length; i++) {
-                         if (carts[i] == null) {
-                              empty = i;
-                              break;
-                         }
-                    }
-                    carts[empty] = products[Integer.parseInt(selprod)];
+               } else if (products.get(Integer.parseInt(selprod)) != null) {
+                    System.out.println(products.get(Integer.parseInt(selprod)).getPname() + "을 선택하셨습니다.");
+                    carts.add(products.get(Integer.parseInt(selprod)));
                }
           }
 
@@ -103,11 +84,11 @@ public class MyShop implements IShop {
 
      public void checkout() {
           int sum = 0;
-          System.out.println(this.title + " : " + users[Integer.parseInt(seluser)].getName() + " - 체크아웃");
+          System.out.println(this.title + " : " + users.get(Integer.parseInt(seluser)).getName() + " - 체크아웃");
           System.out.println("===============================");
-          for (int i = 0; i < carts.length; i++) {
-               if (carts[i] != null) {
-                    System.out.println("[" + i + "] " + carts[i].getPname() + "     " + carts[i].getPrice());
+          for (int i = 0; i < carts.size(); i++) {
+               if (carts.get(i) != null) {
+                    System.out.println("[" + i + "] " + carts.get(i).getPname() + "     " + carts.get(i).getPrice());
                }
           }
           System.out.println("[B] 이전화면");
