@@ -49,7 +49,7 @@ class Box3<T> {
           return list.get(i);
      }
 
-     ArrayList<T> getList() {
+     public ArrayList<T> getList() {
           return list;
      }
 
