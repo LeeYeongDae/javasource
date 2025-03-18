@@ -1,6 +1,18 @@
 package oop;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 public class Account {
+
+@ToString           //ToString 메서드
+@AllArgsConstructor //전체 생성자
+@NoArgsConstructor  //default 생성자
+@Getter             //Getter
+@Setter             //Setter
 
      private String ano;
      private String owner;
