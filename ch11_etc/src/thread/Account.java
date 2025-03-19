@@ -1,4 +1,4 @@
-package oop;
+package thread;
 
 public class Account {
 
@@ -16,15 +16,28 @@ public class Account {
      }
 
      void deposit(long money) {
+          try {
+               Thread.sleep(1000);
+          } catch (Exception e) {
+               e.printStackTrace();
+          }
           balance += money;
      }
 
      void withdraw(long money) {
+
           if (balance < money) {
                System.out.println("출금할 금액이 잔고 금액보다 많습니다.");
                return;
           }
-          balance -= money;
+          synchronized (this) {
+               try {
+                    Thread.sleep(1000);
+               } catch (InterruptedException e) {
+                    e.printStackTrace();
+               }
+               balance -= money;
+          }
      }
 
      void print() {
