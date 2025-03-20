@@ -10,7 +10,7 @@ public class PersonEx {
 
           Person2 p2 = new Person2();
 
-          person2 person2 = Person2.builder()
+          Person2 person2 = Person2.builder()
                     .pno("345")
                     .name("dlfma")
                     .tel("4")
