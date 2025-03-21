@@ -8,24 +8,24 @@ import java.util.Scanner;
 
 public class ArrayEx4 {
      public static void main(String[] args) {
-          // 길이 5인 정수배열
-          Scanner sc = new Scanner(System.in);
           int[] scores;
+          try ( // 길이 5인 정수배열
+                    Scanner sc = new Scanner(System.in)) {
+               System.out.print("학생 수 >>");
+               int num = sc.nextInt();
+               scores = new int[num];
 
-          System.out.print("학생 수 >>");
-          int num = sc.nextInt();
-          scores = new int[num];
-
-          for (int i = 0; i < scores.length; i++) {
-               System.out.print(i + 1 + "번째 학생의 점수 입력 >> ");
-               scores[i] = sc.nextInt();
+               for (int i = 0; i < scores.length; i++) {
+                    System.out.print(i + 1 + "번째 학생의 점수 입력 >> ");
+                    scores[i] = sc.nextInt();
+               }
           }
-
           System.out.println(Arrays.toString(scores));
           int sum = 0;
 
           for (int i = 0; i < scores.length; i++)
                sum += scores[i];
           System.out.println("학생들의 총합 점수 : " + sum + ", 학생들의 평균 점수 : " + (float) sum / scores.length);
+
      }
 }

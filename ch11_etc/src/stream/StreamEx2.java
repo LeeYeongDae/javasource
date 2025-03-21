@@ -16,7 +16,6 @@ public class StreamEx2 {
      public static void main(String[] args) {
           Set<String> set = new HashSet<>();
           Stream<String> stream = set.stream();
-
           String[] strarr = { "s", "t", "r" };
           stream = Arrays.stream(strarr);
 
@@ -28,8 +27,9 @@ public class StreamEx2 {
           }
           int sum = 0;
           for (int i = 0; i <= 100; i++) {
-
+               sum += i;
           }
+          System.out.println(sum);
           stsum = 0;
           IntStream.range(1, 100).forEach(i -> System.out.println(i + " "));
           IntStream.rangeClosed(1, 100).forEach(i -> stsum += i);

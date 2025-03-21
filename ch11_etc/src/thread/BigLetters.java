@@ -3,18 +3,15 @@ package thread;
 public class BigLetters {
      public static void main(String[] args) {
 
-          Thread t1 = new Thread(new Runnable() {
-               @Override
-               public void run() {
-                    for (char ch = 'a'; ch <= 'z'; ch++) {
-                         System.out.print(ch + " ");
-                    }
+          Thread t1 = new Thread(() -> {
+               for (char ch = 'a'; ch <= 'z'; ch++) {
+                    System.out.print(ch + " ");
                }
-
           });
+          t1.start();
 
-          // Thread t1 = new Thread(new SmallLetters());
-          // t1.start();
+          t1 = new Thread(new SmallLetters());
+          t1.start();
           Thread t2 = new Thread(new SmallLetters2());
           System.out.println(t2.getName());
           t2.start();

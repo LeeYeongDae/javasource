@@ -11,17 +11,18 @@ public class ArrayEx3 {
           // 길이 5인 정수배열
           int[] scores = new int[5];
 
-          Scanner sc = new Scanner(System.in);
-          for (int i = 0; i < scores.length; i++) {
-               System.out.print(i + 1 + "번째 학생의 점수 입력 >> ");
-               scores[i] = sc.nextInt();
+          try (Scanner sc = new Scanner(System.in)) {
+               for (int i = 0; i < scores.length; i++) {
+                    System.out.print(i + 1 + "번째 학생의 점수 입력 >> ");
+                    scores[i] = sc.nextInt();
+               }
           }
-
           System.out.println(Arrays.toString(scores));
           int sum = 0;
 
           for (int i = 0; i < scores.length; i++)
                sum += scores[i];
           System.out.println("학생들의 총합 점수 : " + sum + ", 학생들의 평균 점수 : " + (float) sum / scores.length);
+
      }
 }

@@ -29,6 +29,7 @@ public class StreamEx4 {
           List<String> list = fruits.stream()
                     .map(f -> f.toUpperCase())
                     .collect(Collectors.toList());
+          System.out.println(list);
 
           Stream<File> stream = Stream.of(
                     new File("fxxk.txt"),

@@ -6,7 +6,7 @@ package array;
 public class ArrayEx1 {
      public static void main(String[] args) {
           // 학생 100명의 점수를 처리
-          int[] scores = new int[100];
+          // int[] scores = new int[100];
           /*
            * for (int i = 0; i < scores.length; i++) {
            * int score = (int) (Math.random() * 100) + 1;

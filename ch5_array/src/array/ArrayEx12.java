@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class ArrayEx12 {
      public static void main(String[] args) {
-          String[] names = { "Kim", "Park", "Lee" };
+          // String[] names = { "Kim", "Park", "Lee" };
 
           String[] strs = new String[2];
           System.out.println(Arrays.toString(strs)); // [null, null]
