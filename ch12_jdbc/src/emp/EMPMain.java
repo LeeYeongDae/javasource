@@ -3,6 +3,7 @@ package emp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class EMPMain {
@@ -19,8 +20,9 @@ public class EMPMain {
                System.out.println("1. 입력");
                System.out.println("2. 수정");
                System.out.println("3. 삭제");
-               System.out.println("4. 조회");
-               System.out.println("5. 종료");
+               System.out.println("4. 전체조회");
+               System.out.println("5. 특정사원 조회");
+               System.out.println("6. 종료");
                System.out.println("=====================================");
 
                System.out.print("메뉴>> ");
@@ -43,13 +45,42 @@ public class EMPMain {
                          System.out.println(result > 0 ? "삭제성공" : "삭제실패");
                          break;
                     case 4:
+                         List<EMPDTO> list = eDao.select();
+                         empPrint(list);
                          break;
                     case 5:
+                         empNo = getRow(sc);
+                         eDto = eDao.select(empNo);
+                         System.out.println(eDto);
+                         break;
+                    case 6:
                          run = false;
                          break;
                     default:
                          break;
                }
+          }
+     }
+
+     public static int getRow(Scanner sc) {
+          System.out.print("조회 대상 empNo >> ");
+          int empNo = Integer.parseInt(sc.nextLine());
+          return empNo;
+     }
+
+     public static void empPrint(List<EMPDTO> list) {
+          System.out.println("==============================================================");
+          System.out.println("사번  이름 직무 매니저번호     입사일    급여 수당 부서번호");
+          System.out.println("==============================================================");
+          for (EMPDTO empdto : list) {
+               System.out.println(empdto.getEmpNo() + "\t");
+               System.out.println(empdto.getEName() + "\t");
+               System.out.println(empdto.getJob() + "\t");
+               System.out.println(empdto.getMgr() + "\t");
+               System.out.println(empdto.getHireDate() + "\t");
+               System.out.println(empdto.getSal() + "\t");
+               System.out.println(empdto.getComm() + "\t");
+               System.out.println(empdto.getDeptNo() + "\t");
           }
      }
 
